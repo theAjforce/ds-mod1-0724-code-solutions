@@ -1,15 +1,12 @@
 def BracketMatcher(s):
-    list_bracket=[]
+    count = 0
     for par in s:
-        if par in ["("]:
-            list_bracket.append(par)
-        elif par in [")"]:
-            if not list_bracket:
+        if par == '(':
+            count += 1
+        elif par == ')':
+            count -= 1
+            if count < 0:
                 return False
-        current_par = list_bracket.pop()
-        if current_par == "(" != ")":
-            return False
-        else:
-            return True
+    return count == 0
 
 print(BracketMatcher("(a((kl(mns)t)uvwz)"))
