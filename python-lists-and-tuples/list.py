@@ -1,3 +1,4 @@
+##Attempt1
 #Write a function to create two lists, one for the alphabet variable below and one for the index of the alphabet variable
 
 abc_list="abcdefghijklmnopqrstuvwxyz"
@@ -14,7 +15,7 @@ def join_lists():
     print(combined)
 join_lists()
 
-
+##Attempt2
 #Write a function to create two lists, one for the alphabet variable below and one for the index of the alphabet variable
 
 abc = "abcdefghijklmnopqrstuvwxyz"
@@ -33,6 +34,7 @@ def join_lists():
     print(list(combined))
 join_lists()
 
+##Attempt3 (Final Attempt)
 #Write a function to create two lists, one for the alphabet variable below and one for the index of the alphabet variable
 
 abc = "abcdefghijklmnopqrstuvwxyz"
