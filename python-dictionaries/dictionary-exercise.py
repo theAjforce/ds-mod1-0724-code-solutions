@@ -1,6 +1,6 @@
 def making_dict(n):
     binary_dict = {}
-    for num in n:
+    for num in range(n):
         bin_dict_str = ''
         temp_remain = num
         while num > 0:
