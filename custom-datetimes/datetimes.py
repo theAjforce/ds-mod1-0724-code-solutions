@@ -4,7 +4,7 @@ def date_parser(date):
     if "/" in date:
         if date[-3] == "/":
             dt = datetime.strptime(date, "%m/%d/%y")
-        elif date[2] == "/":
+        elif date[-5] == "/":
             dt = datetime.strptime(date, "%d/%m/%Y")
         else:
             return "Need assistance parsing" #I included this clause because after a bit of research I was unable to find how to parse the ones with the timezones included, and I forgot what advice was given to Newton.
