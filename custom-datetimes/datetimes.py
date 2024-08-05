@@ -1,4 +1,5 @@
 from datetime import datetime
+import pytz
 
 def date_parser(date):
     if "/" in date:
@@ -9,7 +10,10 @@ def date_parser(date):
         else:
             date_split = date.split()
             timezone = date_split.pop()
-            dt = date_split
+            timezone_value = pytz.timezone(timezone)
+            joined_date = date_split.join()
+            
+
             
     elif "T" in date:
         dt = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S.%f%z")
