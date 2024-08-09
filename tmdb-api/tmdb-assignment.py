@@ -10,8 +10,14 @@ data = requests.get(url)
 starwars_url = url + "&query=Star%20Wars"
 
 starwars_data = requests.get(starwars_url)
-starwars_data.content
+total_pages = starwars_data.json()['total_pages']
 
-starwars_df = pd.DataFrame(starwars_data.json()['results'])
+all_starwars = []
+for page_num in range(total_pages):
+    page_url = starwars_url + f"&page={page_num+1}"
+    get_request = requests.get(page_url)
+    allswjson = get_request.json()['results']
+    all_starwars += (allswjson)
 
-starwars_df.sort_values(by='popularity', ascending=False)
+allswdf = pd.DataFrame(all_starwars)
+allswdf.sort_values(by='popularity', ascending=False)
