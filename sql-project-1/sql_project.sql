@@ -2,7 +2,8 @@ CREATE TABLE customer_Aj
 (customer_id smallint,
 name varchar(20),
 location varchar(20),
-total_expenditure varchar(20));
+total_expenditure varchar(20),
+PRIMARY KEY(customer_id));
 
 INSERT INTO customer_Aj (customer_id, name, location, total_expenditure)
 VALUES (1701, "John", 'Newport Beach, CA', '2000'),
@@ -42,10 +43,7 @@ SELECT name n, total_expenditure total_exp
 FROM customer_Aj;
 
 ALTER TABLE customer_Aj 
-DROP COLUMN total_expenditure;
-
-ALTER TABLE customer_Aj 
-ADD total_expenditure smallint;
+MODIFY COLUMN total_expenditure SMALLINT;
 
 UPDATE customer_Aj 
 SET total_expenditure = 2000
@@ -95,3 +93,5 @@ SELECT name, location
 FROM customer_Aj ca 
 WHERE total_expenditure < 2000
 ORDER BY name ASC;
+
+DROP TABLE customer_Aj
