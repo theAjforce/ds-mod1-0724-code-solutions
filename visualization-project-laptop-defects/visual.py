@@ -19,7 +19,7 @@ data['correct 3 Sigma limit'] = data["3 Sigma limit"]/1000000
 
 plt.plot(data["Month ID(YYYYMM)"], data[['defect rate','correct mean rate', 'correct 2 Sigma limit', 'correct 3 Sigma limit']])
 
-plt.plot("Month ID(YYYYMM)", "Defects", data=data)
+plt.plot("Month ID(YYYYMM)", "defect rate", data=data)
 
 data.info()
 
@@ -37,5 +37,5 @@ ax2.plot("Month ID(YYYYMM)", "correct mean rate",color='cyan',data=data)
 ax2.plot("Month ID(YYYYMM)", "correct 2 Sigma limit",color='magenta',data=data)
 ax2.plot("Month ID(YYYYMM)", "correct 3 Sigma limit",color='yellow',data=data)
 ax2.annotate("Defect rate reached 72% on 2016-08-01 :(", xy=(data.loc[1,"Month ID(YYYYMM)"],0.722), xytext=(data.loc[3,"Month ID(YYYYMM)"],0.53),arrowprops=dict(facecolor='black', shrink=0.05))
-ax2.annotate("Defect rate was our lowest ever parallel to opportunitis being the highest!", xy=(data.loc[22, "Month ID(YYYYMM)"], 0.038), xytext=(data.loc[13, "Month ID(YYYYMM)"],.15),arrowprops=dict(facecolor='black', shrink=0.05))
+ax2.annotate("Defect rate was our lowest ever parallel to opportunities being the highest!", xy=(data.loc[22, "Month ID(YYYYMM)"], 0.038), xytext=(data.loc[13, "Month ID(YYYYMM)"],.15),arrowprops=dict(facecolor='black', shrink=0.05))
 plt.legend()
