@@ -8,11 +8,12 @@ tables = table_query.fetchall()
 
 joined = cur.execute("""
             
-            SELECT t.*, et.event_type, lf.log_feature, lf.volume, st.severity_type 
+            SELECT t.*, et.event_type, lf.log_feature, lf.volume, st.severity_type, rt.resource_type 
             FROM train t
-                INNER JOIN event_type AS et ON t.id = et.id
-                INNER JOIN log_feature AS lf ON t.id = lf.id
-                INNER JOIN severity_type AS st ON t.id = st.id;
+                LEFT JOIN event_type AS et ON t.id = et.id
+                LEFT JOIN log_feature AS lf ON t.id = lf.id
+                LEFT JOIN severity_type AS st ON t.id = st.id
+                LEFT JOIN resource_type AS rt ON t.id = rt.id;
 
 """)
 joined_data = joined.fetchall()
@@ -37,7 +38,7 @@ uniquedata = unique_occ.fetchall()
 uniquedf = pd.DataFrame(uniquedata)
 
 fault_occ = cur.execute("""
-            SELECT DISTINCT(fault_severity), COUNT(*) AS count
+            SELECT (fault_severity), COUNT(*) AS count
             FROM joined
             GROUP BY fault_severity;
 
