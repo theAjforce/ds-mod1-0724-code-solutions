@@ -16,5 +16,5 @@ data['Cabin'].isna().sum()
 
 #Why is it important to handle null values in datasets?
 
-#It is extremely important to handle null values in datasets because null values can make certain interpolation/extrapolation impossible or meaningless without enough information.
+#It is extremely important to handle null values in datasets because null values can create bias when not handled correctly.
 
