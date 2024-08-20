@@ -24,10 +24,10 @@ plt.bar(gender_cash_constrained.index, gender_cash_constrained.values)
 plt.xlabel('Contact Sex')
 plt.ylabel('Sale Price')  
 
-age_profit = data.groupby('Contact Age')['Profit'].sum()
-plt.bar(age_profit.index, age_profit.values)
-plt.xlabel('Contact Age')
-plt.ylabel('Profit')
+age_bin = pd.cut(data['Contact Age'],11)
+data['age_bins'] = age_bin
+age_profit = data.groupby('age_bins')['Profit'].sum()
+age_profit.plot(kind='bar', xlabel= "Age Bins", ylabel="Profit (Sum)")
 
 product_profit = data.groupby('Product ID')['Profit'].sum()
 plt.bar(product_profit.index, product_profit.values)
