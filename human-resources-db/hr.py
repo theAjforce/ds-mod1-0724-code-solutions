@@ -12,17 +12,20 @@ data = data_query.fetchall()
 query2 = cur.execute("""
                 SELECT EmployeeNumber, Department, Age, Gender, Attrition
                 FROM employee
+                WHERE Department IS 'Sales'
 """)
+column_name = [description[0] for description in cur.description]
 salesdata = query2.fetchall()
-sales = pd.DataFrame(salesdata)
+sales = pd.DataFrame(salesdata, columns=column_name)
 
 query3 = cur.execute("""
             SELECT EmployeeNumber, EducationField, Age, Gender, Attrition
             FROM employee
             WHERE EducationField IS 'Life Sciences'
 """)
+column_name = [description[0] for description in cur.description]
 fielddata = query3.fetchall()
-field = pd.DataFrame(fielddata)
+field = pd.DataFrame(fielddata, columns=column_name)
 
 cur.execute("CREATE TABLE sales (EmployeeNumber, Department, Age, Gender, Attrition)")
 cur.executemany("""
