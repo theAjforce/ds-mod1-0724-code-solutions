@@ -1,10 +1,12 @@
 import sqlite3
 import pandas as pd
-conn = sqlite3.connect("telecom.db")
+conn = sqlite3.connect("/Users/anthonyvillegas/Documents/ds-mod1-0724-code-solutions/telecom-db/telecom.db")
 cur = conn.cursor()
 
 table_query = cur.execute("SELECT name FROM sqlite_master WHERE type='table'")
 tables = table_query.fetchall()
+print(tables)
+
 
 joined = cur.execute("""
             
@@ -20,7 +22,7 @@ joined_data = joined.fetchall()
 joineddb = pd.DataFrame(joined_data)
 
 cur.execute("""
-            CREATE TABLE joined ('index', 'id', 'location','fault_severity', 'event_type', 'log_feature', 'volume', 'severity_type')
+          CREATE TABLE joined ('index', 'id', 'location','fault_severity', 'event_type', 'log_feature', 'volume', 'severity_type', 'resource_type')
 """)
 
 cur.executemany("""
